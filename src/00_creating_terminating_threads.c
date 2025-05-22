@@ -1,5 +1,4 @@
 #include "../inc/thread.h"
-#define	THREAD_COUNT 10
 
 void	*thread_target(void *args)
 {
@@ -22,7 +21,6 @@ int	main(int argc, char *argv[])
 		thread_args[i] = i;
 		if (pthread_create(&threads[i], NULL, thread_target, &thread_args[i]))
 		{
-			perror("pthread_create");
 			return (-1);
 		}
 		++i;

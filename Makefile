@@ -12,6 +12,8 @@
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS += -pthread
+# CFLAGS += -fsanitize=address
 RM = rm -rf
 
 # Directories
@@ -21,13 +23,17 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRCS = \
-	src/creating_terminating_threads.c \
+	src/03_understanding_thread_sync.c
+#	src/02_passing_args_struct_threads.c
+#	src/00_creating_terminating_threads.c
+#	src/01_passing_args_arr_threads.c
 	
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 NAME = $(BIN_DIR)/thread
 
+CFLAGS += -fsanitize=thread
 all: $(NAME)
 
 $(NAME): $(OBJS)
